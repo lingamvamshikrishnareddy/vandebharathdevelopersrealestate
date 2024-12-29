@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen;
+    cursor: none;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative px-4 py-2 text-gray-700 hover:text-primary-600 transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg
+           shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300
+           overflow-hidden border border-gray-100;
+  }
+}
+
+/* Custom Cursor */
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  background-color: theme('colors.primary.600');
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 999;
+  transition: transform 0.1s ease;
+}
+
+.cursor-outline {
+  width: 30px;
+  height: 30px;
+  border: 2px solid theme('colors.primary.400');
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 999;
+  transition: transform 0.2s ease;
+}
+
+/* GSAP Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+/* Gradient Text */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400;
+}
+
+/* Glass Effect */
+.glass-effect {
+  @apply bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg;
+}
